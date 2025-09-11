@@ -94,7 +94,7 @@ function renderOrder() {
       order.innerHTML += `
         <div class="total-price">
           <strong>Total price: ₹${totalPrice}</strong>
-          <button id="pay-btn">PAY</button>
+          <button id="pay-btn">COMPLETE ORDER</button>
         </div>
         
       `
