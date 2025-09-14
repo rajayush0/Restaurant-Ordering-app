@@ -53,19 +53,18 @@ document.addEventListener("click", function(e) {
   function handleRemoveBtnClick(e) {
   if (e.target.dataset.id && e.target.classList.contains('remove-btn')) {
     const itemId = Number(e.target.dataset.id)   // convert string → number
-    const removeItem = orderArray.find(item => item.id === itemId)
-
-    if (removeItem) {
-      removeItem.quantity -= 1   // decrease quantity by 1
-
-      if (removeItem.quantity === 0) {
-        // if qty hits 0, remove it from array
-        const index = orderArray.indexOf(removeItem)
-        orderArray.splice(index, 1)
-      }
-
-      renderOrder()   // re-render the updated order
+    const removeItem = orderArray.find(function(item){
+      return item.id == itemId
+    })
+    if (removeItem.quantity > 1) {
+      removeItem.quantity -= 1
+    } else {
+      orderArray = orderArray.filter(function(item){
+        return item.id != itemId
+      })
     }
+    renderOrder()
+
   }
 }
 
