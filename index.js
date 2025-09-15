@@ -109,3 +109,9 @@ function renderOrder() {
       })
     }
 }
+
+function completeorderBtnClick(e) {
+  if (e.target.id === 'pay-btn') {
+    modal.style.display = 'block'
+  }
+} 
