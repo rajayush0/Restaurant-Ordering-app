@@ -23,12 +23,15 @@ menuEl.innerHTML = menuArray.map(item => `
   </div>
 `).join('')
 
+
+
 let orderArray = []
 
 document.addEventListener("click", function(e) {
 
    handeleAddBtnClick(e)
    handleRemoveBtnClick(e)
+   completeorderBtnClick(e)
 
   function handeleAddBtnClick(e) {
     if (e.target.dataset.id && e.target.classList.contains('add-btn')) {
