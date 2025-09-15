@@ -40,8 +40,7 @@ document.addEventListener("click", function(e) {
         return item.id == itemId
       })
       if (existingItem) {
-        existingItem.quantity += 1
-        existingItem.price = existingItem.quantity * menuArray[itemId].price
+        existingItem.quantity ++
       }
       else {
         const targetItemObj = menuArray.find(function(item) {
@@ -74,12 +73,17 @@ document.addEventListener("click", function(e) {
 
 })
 
+const inputPrice = item.price
+
 function renderOrder() {
   let totalPrice = 0
+  let itemTotalIN = 0
   order.innerHTML = ''
   orderArray.forEach(function(item){
     const itemTotal = item.price * item.quantity
-    totalPrice += itemTotal
+    const itemTotalINEL = item.price * item.quantity
+    itemTotalIN = itemTotalINEL
+    totalPrice += 0 + itemTotal
     order.innerHTML += `
       <div class="order-item">
         <div style="font-size:2rem;">
@@ -89,7 +93,7 @@ function renderOrder() {
         -</button></span></div>
         </span>
         </div>
-        <div class='price'>₹${item.price}</div>
+        <div class='price'>₹${itemTotalIN}</div>
       </div>
     `
   })
@@ -101,7 +105,7 @@ function renderOrder() {
         </div>
         
       `
-      item.price += itemTotal
+      
     } else {
       order.innerHTML = '<p>Your order is empty.</p>'
     } 
