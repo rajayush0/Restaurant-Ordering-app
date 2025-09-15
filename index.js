@@ -41,6 +41,7 @@ document.addEventListener("click", function(e) {
       })
       if (existingItem) {
         existingItem.quantity += 1
+        existingItem.price = existingItem.quantity * menuArray[itemId].price
       }
       else {
         const targetItemObj = menuArray.find(function(item) {
@@ -100,6 +101,7 @@ function renderOrder() {
         </div>
         
       `
+      item.price += itemTotal
     } else {
       order.innerHTML = '<p>Your order is empty.</p>'
     } 
@@ -114,4 +116,7 @@ function completeorderBtnClick(e) {
   if (e.target.id === 'pay-btn') {
     modal.style.display = 'block'
   }
+  if(e.target.id === 'close') {
+    modal.style.display = 'none'
+  } 
 } 
